@@ -2,14 +2,8 @@
   <div class="tab-bar">
     <van-tabbar v-model="currentIndex" active-color="#ff9854">
       <template v-for="(item, index) in tabbarData">
-        <van-tabbar-item :to="item.path">
-          <template #default>
-            <span>{{ item.text }}</span>
-          </template>
-          <template #icon>
-            <img v-show="currentIndex !== index" :src="getAssetURL(item.image)" alt="">
-            <img v-show="currentIndex === index" :src="getAssetURL(item.imageActive)" alt="">
-          </template>
+        <van-tabbar-item :to="item.path" icon="home-o">
+          <span>{{ item.text }}</span>
         </van-tabbar-item>
       </template>
     </van-tabbar>
@@ -38,7 +32,12 @@
   }
 
   img {
-    height: 26px;
+    width: 36px;
+  }
+  
+  .text {
+    font-size: 12px;
+    margin-top: 2px;
   }
 }
 </style>
