@@ -6,6 +6,7 @@ const useCityStore = defineStore("city", {
     allCities: {},
 
     currentCity: {
+      cityId: 45,
       cityName: "广州"
     }
   }),
