@@ -23,6 +23,14 @@ const router = createRouter({
     {
       path: "/message",
       component: () => import("@/views/message/message.vue")
+    },
+    {
+      path: "/city",
+      component: () => import("@/views/city/city.vue"),
+      meta: {
+        // 默认情况下其他路由没有这个设置那么其他页面的设置为 undefined
+        hideTabBar: true
+      }
     }
   ]
 })
