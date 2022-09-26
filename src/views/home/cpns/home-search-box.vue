@@ -1,7 +1,7 @@
 <template>
   <div class="search-box">
     <!-- 位置信息 -->
-    <div class="location">
+    <div class="location bottom-gray-line">
       <div class="city" @click="cityClick">{{ currentCity.cityName }}</div>
       <div class="position" @click="positionClick">
         <span class="text">我的位置</span>
@@ -10,7 +10,7 @@
     </div>
 
     <!-- 日期范围 -->
-    <div class="section date-range" @click="showCalendar = true">
+    <div class="section date-range bottom-gray-line" @click="showCalendar = true">
       <div class="start">
         <div class="date">
           <span class="tip">入住</span>
@@ -54,6 +54,11 @@
           {{ item.tagText.text }}
         </div>
       </template>
+    </div>
+
+    <!-- 搜索按钮 -->
+    <div class="section search-btn">
+      <div class="btn" @click="searchBtnClick">开始搜索</div>
     </div>
   </div>
 </template>
@@ -110,15 +115,26 @@ import { formatMonthDay, getDiffDays } from "@/utils/format_date"
 
   // 热门推荐
   const homeStore = useHomeStore()
-  homeStore.fetchHotSuggestData()
   const { hotSuggests } = storeToRefs(homeStore)
+
+  // 开始搜索
+  const searchBtnClick = () => {
+    router.push({
+      path: "/search",
+      query: {
+        startDate: startDate.value,
+        endDate: endDate.value,
+        currentCity: currentCity.value.cityName
+      }
+    })
+  }
 
 </script>
 
 <style lang="less" scoped>
-.search-box {
-  --van-calendar-popup-height: 100%;
-}
+// .search-box {
+
+// }
 
 .location {
   display: flex;
@@ -208,13 +224,29 @@ import { formatMonthDay, getDiffDays } from "@/utils/format_date"
 
 .hot-suggests {
   margin: 10px 0;
+  height: auto;
 
   .item {
     padding: 4px 8px;
     margin: 4px;
     border-radius: 14px;
     font-size: 12px;
-    line-height: 1;
+    // line-height: 1;
+  }
+}
+
+.search-btn {
+  .btn {
+    width: 342px;
+    height: 38px;
+    max-height: 50px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 38px;
+    text-align: center;
+    border-radius: 20px;
+    color: #fff;
+    background-image: var(--theme-linear-gradient);
   }
 }
 

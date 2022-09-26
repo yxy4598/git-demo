@@ -31,6 +31,13 @@ const router = createRouter({
         // 默认情况下其他路由没有这个设置那么其他页面的设置为 undefined
         hideTabBar: true
       }
+    },
+    {
+      path: "/search",
+      component: () => import("@/views/search/search.vue"),
+      meta: {
+        hideTabBar: true
+      }
     }
   ]
 })
