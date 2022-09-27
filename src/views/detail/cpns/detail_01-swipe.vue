@@ -49,8 +49,6 @@ for (const item of props.swipeData) {
   valueArray.push(item)
 }
 
-console.log(swipeGroup)
-
 // 定义转换数据的方法
 const nameReg = /【(.*?)】/i
 const getName = (name) => {
