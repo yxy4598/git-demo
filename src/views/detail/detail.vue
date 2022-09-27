@@ -83,6 +83,7 @@ const names = computed(() => {
   return Object.keys(sectionEls.value)
 })
 const getSectionRef = (value) => {
+  if(!value) return 
   const name = value.$el.getAttribute("name")
   sectionEls.value[name] = value.$el
 }
