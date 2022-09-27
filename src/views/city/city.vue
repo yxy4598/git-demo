@@ -19,7 +19,7 @@
     </div>
     <div class="content">
       <!-- <city-group :group-data="currentGroup"></city-group> -->
-      <template v-for="(value, key, index) in allCities">
+      <template v-for="(value, key, index) in allCities" :key="key">
         <city-group v-show="tabActive === key" :group-data="value"></city-group>
       </template>
     </div>
